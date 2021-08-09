@@ -2,6 +2,7 @@ import { Character } from "../../types/character";
 import { Container, Description, Image, Subtitle, Title, Status } from "./styles";
 import Link from "next/link";
 
+
 const CARD_WIDTH = 25
 export function Card ({ id, image, location, name, specie, status}: Character) {
     const URL = location.url.replace('https://rickandmortyapi.com/api/location/', '')

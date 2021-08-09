@@ -1,12 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
 import Head from "next/head";
-import { get } from "../../services/api/fetch";
-import { Character as CharacterType,  } from "../../types/character";
-import { Container, Status, Title, Text, Image } from "./styles";
+import { Character as CharacterType, CharacterResponse  } from "../../types/character";
+import { Container, Status, Title, Text, Image } from "../../styles/character-page";
 import { useRouter } from "next/dist/client/router";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { get } from '../../services/api/fetch'
+// import NextImage from "next/image";
+
 
 export default function Character() {
-  const {query} = useRouter()  
+  const { query } = useRouter()  
   const [character, setCharacter] = useState<CharacterType>()
     
   const getCharacters = useCallback(async () => {
@@ -20,8 +23,6 @@ export default function Character() {
     getCharacters()
   }, [getCharacters])
 
-
-    console.log(character);
     
     if (!character) return null;
 
@@ -41,4 +42,26 @@ export default function Character() {
         </Container>
         </>
     )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const characters = await get<CharacterResponse>('https://rickandmortyapi.com/api/character?page=1')
+    const paths = characters.results.map((character) => ({
+      params: { id: character.id.toString() },
+    }))
+  
+    return { paths, fallback: true }
+}
+
+
+export const getStaticProps: GetStaticProps = async ({params}) => {
+  const url = `https://rickandmortyapi.com/api/character/${params.id}`
+  const data = await get<CharacterType>(url)
+ 
+  return {
+    props: {
+      character: data
+    },
+    revalidate: 20
+  }
 }
