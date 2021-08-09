@@ -4,6 +4,12 @@ export interface Character {
     image: string
     status: string
     specie: string
+    gender: string
+    created: string
+    origin: {
+      name: string
+      url: string
+    }
     location: {
       name: string
       url: string

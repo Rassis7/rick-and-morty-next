@@ -7,7 +7,7 @@ import { Card } from '../components/card'
 
 
 export default function Home() {
-  const [page, setPage] = useState(1)
+  const [page] = useState(1)
   const [characters, setCharacters] = useState<Character[]>()
 
   const getCharacters = useCallback(async () => {
