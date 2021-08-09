@@ -51,20 +51,3 @@ export const Subtitle = styled.h3`
     cursor: pointer;
     margin-bottom: 0.3rem;
 `
-
-
-export const Status = styled.p`
-    align-self: center;
-    width: 5rem;
-    background-color: var(--green-200);
-    color: var(--gray-500);
-    filter: brightness(0.3);
-    font-size: 0,8rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-
-    text-transform: uppercase;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-`

@@ -27,7 +27,10 @@ export default function Home() {
       <title>Personagens | Rick And Morty</title>
     </Head>
 
+    <div style={{display: 'flex', alignItems:'center', flexDirection:'column', width: '100%'}}>
+    <h1 style={{marginTop: '2rem'}}>NextJS - Rick and Morty</h1>
     {!!characters && characters.map(character => <Card key={character.name} {...character}/> )}
+    </div>
     </>
   )
 }

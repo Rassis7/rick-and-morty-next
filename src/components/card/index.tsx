@@ -1,6 +1,7 @@
 import { Character } from "../../types/character";
-import { Container, Description, Image, Subtitle, Title, Status } from "./styles";
+import { Container, Description, Image, Subtitle, Title } from "./styles";
 import Link from "next/link";
+import { Status } from "../status";
 
 const CARD_WIDTH = 25
 export function Card ({ id, image, location, name, specie, status}: Character) {
@@ -18,7 +19,7 @@ export function Card ({ id, image, location, name, specie, status}: Character) {
                 <Subtitle>
                     {location.name}
                 </Subtitle>
-                <Status>{status}</Status>
+                <Status value={status}/>
             </Description>
         </Container>
     )

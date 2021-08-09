@@ -2,8 +2,9 @@ import { useCallback, useEffect, useState } from "react";
 import Head from "next/head";
 import { get } from "../../services/api/fetch";
 import { Character as CharacterType,  } from "../../types/character";
-import { Container, Status, Title, Text, Image } from "./styles";
+import { Container, Title, Text, Image } from "./styles";
 import { useRouter } from "next/dist/client/router";
+import { Status } from "../../components/status";
 
 export default function Character() {
   const {query} = useRouter()  
@@ -20,9 +21,7 @@ export default function Character() {
     getCharacters()
   }, [getCharacters])
 
-
-    console.log(character);
-    
+   
     if (!character) return null;
 
     return (
@@ -33,7 +32,7 @@ export default function Character() {
         <Container>
             <Image src={character.image} alt={character.name} width="200" height="200" />
             <Title>{character.name}</Title>
-            <Status>{character.status}</Status>
+            <Status value={character.status} />
             <Text>{character.specie}</Text>
             <Text>{character.gender}</Text>
             <Text>{`Origem: ${character.origin.name}`}</Text>

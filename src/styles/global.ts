@@ -18,6 +18,8 @@ export default createGlobalStyle`
     --purple-500: #805ad5;
     --green-200: #9ae6b4;
     --green-500: #67ea94;
+    --red-200: #FEB2B2;
+    --red-500: #E53E3E;
   }
   
   @media (max-width: 1080px) {

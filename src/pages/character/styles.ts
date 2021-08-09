@@ -17,23 +17,6 @@ export const Title = styled.h1`
     margin: 1rem 0.5rem;
 `
 
-export const Status = styled.p`
-    align-self: center;
-    width: 5rem;
-    background-color: var(--green-200);
-    color: var(--gray-500);
-    filter: brightness(0.3);
-    font-size: 0,8rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-
-    text-transform: uppercase;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    text-align: center;
-`
-
 export const Text = styled.h4`
     color: var(--gray-500);
     font-size: 1rem;
