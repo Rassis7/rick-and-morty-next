@@ -1,30 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
 import Head from "next/head";
 import { Character as CharacterType, CharacterResponse  } from "../../types/character";
 import { Container, Status, Title, Text, Image } from "../../styles/character-page";
 import { useRouter } from "next/dist/client/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { get } from '../../services/api/fetch'
-// import NextImage from "next/image";
 
+export default function Character({character}: {character: CharacterType}) {
+  const { isFallback } = useRouter()  
 
-export default function Character() {
-  const { query } = useRouter()  
-  const [character, setCharacter] = useState<CharacterType>()
-    
-  const getCharacters = useCallback(async () => {
-    if(!query.id) return;
-    const url = `https://rickandmortyapi.com/api/character/${query.id}`
-    const data = await get<CharacterType>(url)
-    setCharacter(data)
-  },[query])
-
-  useEffect(() => {
-    getCharacters()
-  }, [getCharacters])
-
-    
-    if (!character) return null;
+    if (isFallback) return <p>Carregando...</p>;
 
     return (
         <>
