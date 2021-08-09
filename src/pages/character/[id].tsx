@@ -8,7 +8,7 @@ import { get } from '../../services/api/fetch'
 export default function Character({character}: {character: CharacterType}) {
   const { isFallback } = useRouter()  
 
-    if (isFallback) return <p>Carregando...</p>;
+    if (isFallback) return <Title>Carregando...</Title>;
 
     return (
         <>
