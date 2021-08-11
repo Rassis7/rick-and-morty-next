@@ -4,18 +4,15 @@ import {  CharacterResponse } from '../types/character'
 import { Card } from '../components/card'
 import { GetServerSideProps } from 'next'
 
-
-
 export default function Home({ results }: CharacterResponse) {
   if(!results || !results.length) return null;
   
   return (
     <>
-    <Head>
-      <title>Personagens | Rick And Morty</title>
-    </Head>
-
-    {!!results && results.map(character => <Card key={character.name} {...character}/> )}
+      <Head>
+        <title>Personagens | Rick And Morty</title>
+      </Head>
+      {!!results && results.map(character => <Card key={character.name} {...character}/> )}
     </>
   )
 }

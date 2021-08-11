@@ -11,7 +11,7 @@ export default function Character({character}: {character: CharacterType}) {
     if (isFallback) return <Title>Carregando...</Title>;
 
     return (
-        <>
+      <>
         <Head>
             <title>{character.name} | Rick And Morty</title>
         </Head>
@@ -24,17 +24,17 @@ export default function Character({character}: {character: CharacterType}) {
             <Text>{`Origem: ${character.origin.name}`}</Text>
             <Text>{`Localização: ${character.location.name}`}</Text>
         </Container>
-        </>
+      </>
     )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const characters = await get<CharacterResponse>('https://rickandmortyapi.com/api/character?page=1')
-    const paths = characters.results.map((character) => ({
-      params: { id: character.id.toString() },
-    }))
-  
-    return { paths, fallback: true }
+  const characters = await get<CharacterResponse>('https://rickandmortyapi.com/api/character?page=1')
+  const paths = characters.results.map((character) => ({
+    params: { id: character.id.toString() },
+  }))
+
+  return { paths, fallback: true }
 }
 
 
